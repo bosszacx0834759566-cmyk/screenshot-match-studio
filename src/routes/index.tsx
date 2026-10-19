@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowDown, ArrowUpRight, Plus, X } from "lucide-react";
 import { Scramble } from "@/components/Scramble";
+import { CursorFx, Starfield } from "@/components/Fx";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -111,6 +112,8 @@ function Index() {
 
   return (
     <main className="company-page bg-ink font-sans text-paper">
+      <CursorFx />
+      <div className="scanlines" aria-hidden="true" />
       <div className="progress-bar" style={{ transform: `scaleX(${progress})`, width: "100%" }} />
       <a href="#robertcore" className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] focus:bg-paper focus:p-4 focus:text-ink">Skip to content</a>
 
@@ -148,7 +151,7 @@ function Index() {
           <div className="mt-14 grid gap-10 border-t border-line-dark pt-8 lg:grid-cols-12">
             <p className="body-copy reveal text-paper/60 lg:col-span-5">GodHeimer Technologies builds resilient communication infrastructure between space and Earth — designed to perform even when the environment works against it.</p>
             <div className="reveal flex flex-wrap items-center gap-6 lg:col-span-6 lg:col-start-7 lg:justify-end">
-              <a href="#robertcore" className="pill mono"><Scramble text="Discover RobertCore" /> <ArrowUpRight className="h-4 w-4" /></a>
+              <a href="#robertcore" data-magnetic className="pill mono"><Scramble text="Discover RobertCore" /> <ArrowUpRight className="h-4 w-4" /></a>
               <a href="#challenge" className="mono u-link text-paper/70"><Scramble text="Scroll" /> <ArrowDown className="h-4 w-4" /></a>
             </div>
           </div>
