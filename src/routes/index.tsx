@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowDown, ArrowUpRight, Plus, X } from "lucide-react";
 import { Scramble } from "@/components/Scramble";
+import { CursorFx, Starfield } from "@/components/Fx";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -111,6 +112,8 @@ function Index() {
 
   return (
     <main className="company-page bg-ink font-sans text-paper">
+      <CursorFx />
+      <div className="scanlines" aria-hidden="true" />
       <div className="progress-bar" style={{ transform: `scaleX(${progress})`, width: "100%" }} />
       <a href="#robertcore" className="sr-only focus:not-sr-only focus:fixed focus:left-5 focus:top-5 focus:z-[100] focus:bg-paper focus:p-4 focus:text-ink">Skip to content</a>
 
@@ -123,7 +126,7 @@ function Index() {
           <div className="flex items-center gap-6">
             <a href="#contact" className="mono u-link hidden sm:inline-flex"><Scramble text="Contact" /> <ArrowUpRight className="h-3.5 w-3.5" /></a>
             <Dialog.Root open={open} onOpenChange={setOpen}>
-              <Dialog.Trigger className="mono flex items-center gap-3" aria-label="Open menu"><span className="hidden sm:inline">Menu</span><span className="flex flex-col gap-1.5"><span className="block h-px w-6 bg-paper" /><span className="block h-px w-6 bg-paper" /></span></Dialog.Trigger>
+              <Dialog.Trigger data-magnetic className="menu-btn mono flex items-center gap-3" aria-label="Open menu"><span className="hidden sm:inline"><Scramble text="Menu" /></span><span className="burger"><span /><span /></span></Dialog.Trigger>
               <Dialog.Portal>
                 <Dialog.Overlay className="fixed inset-0 z-[60] bg-ink" />
                 <Dialog.Content aria-describedby={undefined} className="site-container fixed inset-0 z-[61] flex max-w-none flex-col overflow-y-auto bg-ink pb-8 pt-6 text-paper">
@@ -141,14 +144,14 @@ function Index() {
 
       {/* HERO */}
       <section id="top" ref={heroRef} onMouseMove={onMove} className="hero bg-ink">
-
+        <Starfield />
         <div className="site-container relative pb-10 pt-32">
           <div className="mono reveal mb-10 flex flex-wrap gap-x-8 gap-y-2 text-paper/50"><span>● Link status: nominal</span><span>Lat 13.7563° N / Lon 100.5018° E</span><Clock /></div>
-          <h1 className="hero-title"><Lines lines={["Bridging", <span className="hero-sub">Space &amp; Earth.</span>]} /></h1>
+          <h1 className="hero-title"><Lines lines={[<span className="glitch">Bridging</span>, <span className="hero-sub glitch">Space &amp; Earth.</span>]} /></h1>
           <div className="mt-14 grid gap-10 border-t border-line-dark pt-8 lg:grid-cols-12">
             <p className="body-copy reveal text-paper/60 lg:col-span-5">GodHeimer Technologies builds resilient communication infrastructure between space and Earth — designed to perform even when the environment works against it.</p>
             <div className="reveal flex flex-wrap items-center gap-6 lg:col-span-6 lg:col-start-7 lg:justify-end">
-              <a href="#robertcore" className="pill mono"><Scramble text="Discover RobertCore" /> <ArrowUpRight className="h-4 w-4" /></a>
+              <a href="#robertcore" data-magnetic className="pill mono"><Scramble text="Discover RobertCore" /> <ArrowUpRight className="h-4 w-4" /></a>
               <a href="#challenge" className="mono u-link text-paper/70"><Scramble text="Scroll" /> <ArrowDown className="h-4 w-4" /></a>
             </div>
           </div>
