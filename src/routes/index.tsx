@@ -270,7 +270,7 @@ function Index() {
               <p className="mono mb-6 text-paper/40">Follow</p>
               <div className="flex flex-col">
                 {[["Facebook", "facebook.com/godheimer"], ["Instagram", "instagram.com/godheimerhj"], ["X", "x.com/godheimerhj"], ["LinkedIn", "linkedin.com/company/godheimer"]].map(([n, u]) => (
-                  <a key={n} href={`https://${u}`} target="_blank" rel="noreferrer" className="mono flex items-center justify-between border-b border-line-dark py-4 text-paper/70 transition-colors hover:text-paper">{n}<ArrowUpRight className="h-4 w-4" /></a>
+                  <a key={n} href={`https://${u}`} target="_blank" rel="noreferrer" className="social-link mono flex items-center justify-between border-b border-line-dark py-4 text-paper/70"><span className="social-label"><Scramble text={n} /></span><ArrowUpRight className="social-arrow h-4 w-4" /></a>
                 ))}
               </div>
             </div>
